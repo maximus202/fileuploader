@@ -10,16 +10,22 @@ class App extends React.Component {
       filterOption: 'All'
     };
   }
+  updateSearchTerm(term) {
+    this.setState({
+      searchTerm: term
+    })
+  }
   render() {
     return (
       <div className='App'>
         <SearchBar
           searchTerm={this.state.searchTerm}
-          filterOption={this.state.filterOption} />
+          filterOption={this.state.filterOptions}
+          handleUpdate={term => this.updateSearchTerm(term)} />
         <FilterableList
-          files={this.props.FILES}
+          files={this.props.files}
           searchTerm={this.state.searchTerm}
-          filterOption={this.state.filterOption} />
+          filterOption={this.state.filterOptions} />
       </div>
     );
   }
